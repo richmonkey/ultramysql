@@ -97,7 +97,7 @@ void *API_getSocket()
   if (once)
   {
     /*FIXME: References for module or class are never released */
-    sockmodule = PyImport_ImportModule ("socket");
+    sockmodule = PyImport_ImportModule ("gevent.socket");
 
     if (sockmodule == NULL)
     {

@@ -86,14 +86,14 @@ if sys.platform == "win32":
     libs.append("ws2_32")
 
 
-module1 = Extension('umysql',
+module1 = Extension('emysql',
                 sources = ['./python/umysql.c', './python/io_cpython.c', './lib/capi.cpp', './lib/Connection.cpp', './lib/PacketReader.cpp', './lib/PacketWriter.cpp', './lib/SHA1.cpp'],
                 include_dirs = ['./python', './lib'],
                 library_dirs = [],
                 libraries=libs,
                 define_macros=[('WIN32_LEAN_AND_MEAN', None)])
 					
-setup (name = 'umysql',
+setup (name = 'emysql',
        version = "2.61",
        description = "Ultra fast MySQL driver for Python",
        ext_modules = [module1],

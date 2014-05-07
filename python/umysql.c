@@ -1316,7 +1316,7 @@ static PyMemberDef Connection_members[] = {
 static PyTypeObject ConnectionType = { 
   PyObject_HEAD_INIT(NULL)
   0,				/* ob_size        */
-  "umysql.Connection",		/* tp_name        */
+  "emysql.Connection",		/* tp_name        */
   sizeof(Connection),		/* tp_basicsize   */
   0,				/* tp_itemsize    */
   Connection_Destructor,		/* tp_dealloc     */
@@ -1412,7 +1412,7 @@ static PyMemberDef ResultSet_members[] = {
 static PyTypeObject ResultSetType = { 
   PyObject_HEAD_INIT(NULL)
   0,				/* ob_size        */
-  "umysql.ResultSet",		/* tp_name        */
+  "emysql.ResultSet",		/* tp_name        */
   sizeof(ResultSet),		/* tp_basicsize   */
   0,				/* tp_itemsize    */
   ResultSet_Destructor,		/* tp_dealloc     */
@@ -1454,13 +1454,13 @@ static PyMethodDef methods[] = {
 };
 
 PyMODINIT_FUNC
-  initumysql(void) 
+  initemysql(void) 
 {
   PyObject* m;
   PyObject *dict;
   PyDateTime_IMPORT;
 
-  m = Py_InitModule3("umysql", methods, "");
+  m = Py_InitModule3("emysql", methods, "");
   if (m == NULL)
     return;
 
@@ -1478,8 +1478,8 @@ PyMODINIT_FUNC
   Py_INCREF(&ResultSetType);
   PyModule_AddObject(m, "ResultSet", (PyObject *)&ResultSetType);
 
-  umysql_Error = PyErr_NewException("umysql.Error", PyExc_StandardError, NULL);
-  umysql_SQLError = PyErr_NewException("umysql.SQLError", umysql_Error, NULL);
+  umysql_Error = PyErr_NewException("emysql.Error", PyExc_StandardError, NULL);
+  umysql_SQLError = PyErr_NewException("emysql.SQLError", umysql_Error, NULL);
 
   PyDict_SetItemString(dict, "Error", umysql_Error);
   PyDict_SetItemString(dict, "SQLError", umysql_SQLError);
